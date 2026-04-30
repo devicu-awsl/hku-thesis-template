@@ -13,7 +13,10 @@ If you have figures, DO NOT DIRECTLY PASTE FIGURES FROM OTHER SOURCES; they shou
 
 **GenAI:** Less than 20%. AI scores under 20% are suppressed by Turnitin. If your AI percentage is higher than 20%, consult your supervisor for his/her opinion as there are recent literature suggesting Turnitin may misclassify non-native English writing as AI-generated. We will also reach out to your supervisor if needed.
 
+---
+## Preview
 
+[To do]
 
 ---
 
