@@ -1,7 +1,17 @@
-# HKU MSc Dissertation LaTeX Template (v3)
+# HKU MSc Dissertation LaTeX Template
 
-An unofficial LaTeX template for the HKU MSc Final Report / Dissertation,
-strictly following the DOCX template formatting guidelines.
+An unofficial LaTeX template for the HKU MSc Final Report / Dissertation, strictly following the DOCX template formatting guidelines. 
+
+[Dissertation report (MS word template)]: https://docs.google.com/document/d/1-CYaa02tVP_KbrOG3NTDs8q2SehJ-lYF/edit?usp=sharing&ouid=107516997935154803843&rtpof=true&sd=true
+
+The recommended length for a dissertation is 25,000 words. However, this can vary depending on the specific research area. **Ultimately, the focus should be on the quality and depth of content rather than the word count**. Students are advised to discuss with their supervisors what should be included in their dissertation or project reports.
+
+**Plagiarism:** single source < 1%. 
+If you have figures, DO NOT DIRECTLY PASTE FIGURES FROM OTHER SOURCES; they should be re-drawn (even if cited). Otherwise, just simply don't include the figure.
+
+**GenAI:** Less than 20%. AI scores under 20% are suppressed by Turnitin. If your AI percentage is higher than 20%, consult your supervisor for his/her opinion as there are recent literature suggesting Turnitin may misclassify non-native English writing as AI-generated. We will also reach out to your supervisor if needed.
+
+
 
 ---
 
@@ -15,11 +25,11 @@ strictly following the DOCX template formatting guidelines.
 │   └── config.tex                 ← All packages & global settings
 │
 ├── Preliminary/
-│   ├── cover.tex                  ← ★ THESIS DETAILS + cover page  ← EDIT HERE
+│   ├── cover.tex                  ← ★ THESIS cover page
 │   ├── abstract.tex               ← Abstract
 │   ├── declaration.tex            ← Declaration of authorship
 │   ├── acknowledgment.tex         ← Acknowledgements
-│   ├── glossary.tex               ← Glossary & acronym definitions  ← EDIT HERE
+│   ├── glossary.tex               ← Glossary & acronym definitions
 │   └── symbols.tex                ← List of symbols
 │
 ├── Chapters/
@@ -60,7 +70,15 @@ your personal details:
 
 ### 2. Set the Compiler to XeLaTeX
 
-This template **requires XeLaTeX**. pdfLaTeX will not work.
+This template **requires XeLaTeX**. pdfLaTeX will not work. 
+
+> If using pdfLaTeX need to change "Font" section in `Config/config.tex` file to the following code and delete the `.latexmkrc` file.
+>
+> ```tex
+> \usepackage[utf8]{inputenc}
+> \usepackage[T1]{fontenc}
+> \usepackage{times}
+> ```
 
 | Platform    | How to set XeLaTeX                              |
 |-------------|-------------------------------------------------|
@@ -70,14 +88,6 @@ This template **requires XeLaTeX**. pdfLaTeX will not work.
 ### 3. Compile
 
 **Overleaf / Prism** — click Compile. Glossaries are handled automatically.
-
-**Command line:**
-```bash
-xelatex main
-makeglossaries main
-xelatex main
-xelatex main
-```
 
 ### 4. Write Your Content
 
@@ -104,46 +114,12 @@ xelatex main
 
 ---
 
-## Glossary & Acronyms
-
-All definitions live in **`Preliminary/glossary.tex`**.
-
-**Define an acronym:**
-```latex
-\newacronym{gcd}{GCD}{Greatest Common Divisor}
-```
-
-**Define a glossary term:**
-```latex
-\newglossaryentry{formula}{
-  name        = {formula},
-  description = {A mathematical expression}
-}
-```
-
-**Use in text:**
-
-| Command           | Output                              |
-|-------------------|-------------------------------------|
-| `\gls{label}`     | term (links to glossary)            |
-| `\Gls{label}`     | Term (sentence-case)                |
-| `\glspl{label}`   | terms (plural)                      |
-| `\acrlong{gcd}`   | Greatest Common Divisor             |
-| `\acrshort{gcd}`  | GCD                                 |
-| `\acrfull{gcd}`   | Greatest Common Divisor (GCD)       |
-
-Two lists print automatically in the front matter:
-- **List of Abbreviations** — all `\newacronym` entries
-- **Glossary** — all `\newglossaryentry` entries
-
----
-
 ## Dates
 
-| Location              | Command                  | Example Output      |
-|-----------------------|--------------------------|---------------------|
-| Cover page            | `\monthandyear\today`    | April 2026          |
-| Declaration signature | `\fulldate\today`        | 28th April 2026     |
+| Location              | Command               | Example Output |
+| --------------------- | --------------------- | -------------- |
+| Cover page            | `\monthandyear\today` | MM YYYY        |
+| Declaration signature | `\fulldate\today`     | DD MM YYYY     |
 
 Both auto-update on every compile via the `datetime` package in `Config/config.tex`.
 
@@ -171,18 +147,17 @@ Cite in text with `\cite{key}`.
 
 ## Signature Image
 
-Replace `Figures/Signature.png` with your own signature (transparent PNG,
-~500px wide recommended). It overlays the signature line in
-`Preliminary/declaration.tex`. To use a plain underline instead, comment
-out the `tikzpicture` block in that file.
+Replace `Figures/Signature.png` with your own signature (transparent PNG, ~500px wide recommended). It overlays the signature line in`Preliminary/declaration.tex`. To use a plain underline instead, comment out the `tikzpicture` block in that file.
 
 ---
 
 ## Notes
 
-- **Do not edit `main.tex`** for thesis details — edit `Preliminary/cover.tex`.
 - The compiler must be **XeLaTeX** — pdfLaTeX will fail due to `fontspec`.
-- `HKUThesis.cls` is not used in v3 — all formatting is in `Config/config.tex`.
+
 - On systems without Times New Roman (e.g. local Linux), the template
   automatically falls back to TeX Gyre Termes (a metrically identical substitute).
   On Overleaf and Prism, Times New Roman loads directly.
+
+## 
+
