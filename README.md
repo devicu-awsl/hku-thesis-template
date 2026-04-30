@@ -3,6 +3,7 @@
 An unofficial LaTeX template for the HKU MSc Final Report / Dissertation, strictly following the DOCX template formatting guidelines. 
 
 [Updated on 18 April 2026] Also accessed in Documentation folder in Github.
+
 Latest - Dissertation report (MS word template): https://docs.google.com/document/d/1-CYaa02tVP_KbrOG3NTDs8q2SehJ-lYF/edit?usp=sharing&ouid=107516997935154803843&rtpof=true&sd=true
 
 The recommended length for a dissertation is 25,000 words. However, this can vary depending on the specific research area. **Ultimately, the focus should be on the quality and depth of content rather than the word count**. Students are advised to discuss with their supervisors what should be included in their dissertation or project reports.
