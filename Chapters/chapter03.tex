@@ -1,0 +1,46 @@
+%====================================================================
+%  CHAPTER 3: PROPOSED METHODOLOGY
+%====================================================================
+\chapter{Proposed Methodology}
+\label{chap:method}
+
+This chapter describes the proposed methodology. Describe your
+approach, algorithms, and theoretical framework here.
+
+%--------------------------------------------------------------------
+\section{Pre-processing}
+\label{sec:preprocessing}
+
+Describe how raw data is collected, cleaned, normalised, and prepared
+before being fed into your model.
+
+%--------------------------------------------------------------------
+\section{Proposed Method}
+\label{sec:proposed_method}
+
+Let $\mathbf{X} = [\mathbf{x}_1, \ldots, \mathbf{x}_n]^\top \in
+\mathbb{R}^{n \times p}$ denote the data matrix. The objective is
+to minimise the following regularised loss:
+\begin{equation}
+  \min_{\boldsymbol{\beta}} \;\frac{1}{n}\sum_{i=1}^{n}
+  \ell(y_i, \mathbf{x}_i^\top \boldsymbol{\beta}) +
+  \lambda \Omega(\boldsymbol{\beta}),
+\end{equation}
+where $\ell(\cdot,\cdot)$ is a loss function and
+$\Omega(\boldsymbol{\beta})$ is a regularisation term.
+
+\begin{singlespace}
+\noindent\textbf{Initialisation:}
+\begin{equation}
+  \boldsymbol{\beta}^{(0)} = \mathbf{0}, \quad
+  \mathbf{r}^{(0)} = \mathbf{y} - \mathbf{X}\boldsymbol{\beta}^{(0)}.
+\end{equation}
+
+\noindent\textbf{Recursive step:} For $t = 1, 2, \ldots, T$:
+\begin{equation}
+  \boldsymbol{\beta}^{(t)} = \boldsymbol{\beta}^{(t-1)} -
+  \eta \nabla_{\boldsymbol{\beta}} \mathcal{L}
+  \!\left(\boldsymbol{\beta}^{(t-1)}\right),
+\end{equation}
+where $\eta > 0$ is the learning rate.
+\end{singlespace}

@@ -1,0 +1,114 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  HKU MSc Final Report / Dissertation — LaTeX Template
+%
+%  File structure:
+%    main.tex                    ← master file (document body only)
+%    Config/config.tex           ← all packages & global settings
+%    Preliminary/cover.tex       ← thesis details + cover page  ← EDIT HERE
+%    Preliminary/abstract.tex    ← abstract
+%    Preliminary/declaration.tex ← declaration of authorship
+%    Preliminary/acknowledgment.tex
+%    Preliminary/glossary.tex    ← glossary & acronym definitions
+%    Preliminary/symbols.tex     ← list of symbols
+%    Chapters/chapter01–05.tex   ← chapters
+%    Figures/                    ← add figures here
+%    references.tex              ← bibliography entries
+%    appendices.tex              ← appendix chapters
+%
+%  Compiler: XeLaTeX (required)
+%  Compile order (Overleaf/Prism: automatic):
+%    xelatex main
+%    makeglossaries main
+%    xelatex main
+%    xelatex main
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[12pt, a4paper, oneside]{report}
+
+%====================================================================
+%  LOAD ALL PACKAGES & SETTINGS
+%====================================================================
+\input{Config/config}
+
+%====================================================================
+%  HELPER: unnumbered chapter heading with TOC entry
+%====================================================================
+\newcommand{\unnumberedchapter}[1]{%
+  \chapter*{\MakeUppercase{#1}}%
+  \addcontentsline{toc}{chapter}{#1}%
+  \markboth{\MakeUppercase{#1}}{}%
+}
+
+%====================================================================
+\begin{document}
+%====================================================================
+
+\pagenumbering{roman}
+\setcounter{page}{0}
+
+%====================================================================
+%  COVER PAGE  (thesis details are inside Preliminary/cover.tex)
+%====================================================================
+\input{Preliminary/cover}
+
+%====================================================================
+%  FRONT MATTER
+%====================================================================
+\input{Preliminary/abstract}
+\input{Preliminary/declaration}
+\input{Preliminary/acknowledgment}
+
+\tableofcontents\clearpage
+
+% List of Tables — only shown if tables exist in the document
+\listoftables
+\addcontentsline{toc}{chapter}{List of Tables}
+\clearpage
+
+% List of Figures — only shown if figures exist in the document
+\listoffigures
+\addcontentsline{toc}{chapter}{List of Figures}
+\clearpage
+
+\input{Preliminary/symbols}
+
+%====================================================================
+%  ABBREVIATIONS & GLOSSARY
+%  Requires makeglossaries pass (automatic on Overleaf/Prism).
+%====================================================================
+\printglossary[type=\acronymtype, title=Abbreviations,
+               toctitle=List of Abbreviations, nonumberlist]
+\clearpage
+\printglossary[title=Glossary, toctitle=Glossary, nonumberlist]
+\clearpage
+
+%====================================================================
+%  MAIN MATTER
+%====================================================================
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\input{Chapters/chapter01}
+\input{Chapters/chapter02}
+\input{Chapters/chapter03}
+\input{Chapters/chapter04}
+\input{Chapters/chapter05}
+
+%====================================================================
+%  REFERENCES
+%====================================================================
+\clearpage
+\begin{center}
+  {\fontsize{16}{22}\selectfont\bfseries REFERENCES}
+\end{center}
+\addcontentsline{toc}{chapter}{References}
+\markboth{REFERENCES}{}
+\input{references}
+
+%====================================================================
+%  APPENDICES
+%====================================================================
+\appendix
+\input{appendices}
+
+\end{document}

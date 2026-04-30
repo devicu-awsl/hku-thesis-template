@@ -1,0 +1,141 @@
+%====================================================================
+%  Config/config.tex
+%  All package imports and document-wide settings.
+%  Compiler: XeLaTeX (required for fontspec / Times New Roman)
+%====================================================================
+
+%--- Font (XeLaTeX: fontspec replaces inputenc + fontenc + times) ---
+\usepackage{fontspec}
+\IfFontExistsTF{Times New Roman}{\setmainfont{Times New Roman}}{\setmainfont{TeX Gyre Termes}}
+
+%--- Page Geometry (matches DOCX: L=3.17 R=3.17 T=2.54 B=2.54 cm) ---
+\usepackage{geometry}
+\geometry{
+  a4paper,
+  left        = 3.17cm,
+  right       = 3.17cm,
+  top         = 2.54cm,
+  bottom      = 2.54cm,
+  headsep     = 0.5cm,
+  headheight  = 14pt,
+}
+
+%--- Line Spacing ---
+\usepackage{setspace}
+\doublespacing
+
+%--- Paragraph ---
+\setlength{\parindent}{1.27cm}
+\setlength{\parskip}{0pt}
+
+%--- Dates ---
+%  \monthandyear\today  →  "April 2026"       (cover page)
+%  \fulldate\today      →  "28th April 2026"  (declaration)
+\usepackage{datetime}
+\newdateformat{monthandyear}{\monthname[\THEMONTH] \THEYEAR}
+\newdateformat{fulldate}{\ordinaldate{\THEDAY}\ \monthname[\THEMONTH]\ \THEYEAR}
+
+%--- Heading Styles ---
+\usepackage{titlesec}
+\makeatletter
+\titleformat{\chapter}[block]
+  {\normalfont\fontsize{16}{20}\bfseries}
+  {\@chapapp\ \thechapter\quad}{0pt}{}
+\titlespacing*{\chapter}{0pt}{0pt}{24pt}
+\makeatother
+
+\titleformat{\section}[block]
+  {\normalfont\fontsize{14}{18}\bfseries}
+  {\thesection\quad}{0pt}{}
+\titlespacing*{\section}{0pt}{12pt}{6pt}
+
+\titleformat{\subsection}[block]
+  {\normalfont\fontsize{12}{16}\bfseries\itshape}
+  {\thesubsection\quad}{0pt}{}
+\titlespacing*{\subsection}{0pt}{10pt}{4pt}
+
+%--- Header / Footer ---
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[C]{\small\leftmark}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyfoot[C]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+}
+
+%--- Table of Contents Styles ---
+\usepackage{tocloft}
+\setlength{\cftbeforetoctitleskip}{0pt}
+\setlength{\cftaftertoctitleskip}{12pt}
+\renewcommand{\cfttoctitlefont}{\fontsize{16}{20}\bfseries\MakeUppercase}
+\renewcommand{\cftlottitlefont}{\fontsize{16}{20}\bfseries\MakeUppercase}
+\renewcommand{\cftloftitlefont}{\fontsize{16}{20}\bfseries\MakeUppercase}
+\setlength{\cftbeforelottitleskip}{0pt}
+\setlength{\cftafterlottitleskip}{12pt}
+\setlength{\cftbeforeloftitleskip}{0pt}
+\setlength{\cftafterloftitleskip}{12pt}
+
+\usepackage{etoolbox}
+\preto\tableofcontents{\begin{singlespace}}
+\appto\tableofcontents{\end{singlespace}}
+\preto\listoftables{\begin{singlespace}}
+\appto\listoftables{\end{singlespace}}
+\preto\listoffigures{\begin{singlespace}}
+\appto\listoffigures{\end{singlespace}}
+
+%--- Captions ---
+\usepackage{caption}
+\captionsetup{
+  font            = normalsize,
+  labelfont       = bf,
+  labelsep        = space,
+  justification   = justified,
+  singlelinecheck = false,
+}
+\captionsetup[table]{position=above, skip=4pt}
+\captionsetup[figure]{position=below, skip=4pt}
+
+%--- Chapter-based numbering: Table 2.1 / Fig. 2.1 / Eq. (2.1) ---
+\usepackage{chngcntr}
+\counterwithin{table}{chapter}
+\counterwithin{figure}{chapter}
+\counterwithin{equation}{chapter}
+\renewcommand{\thetable}{\thechapter.\arabic{table}}
+\renewcommand{\thefigure}{\thechapter.\arabic{figure}}
+
+%--- Mathematics ---
+\usepackage{amsmath, amssymb}
+
+%--- Graphics & TikZ ---
+\usepackage{graphicx}
+\graphicspath{{Figures/}}
+\usepackage{tikz}
+
+%--- Tables ---
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+
+%--- Miscellaneous ---
+\usepackage{url}
+
+%--- Glossaries ---
+%  Compile order: xelatex → makeglossaries main → xelatex → xelatex
+%  Overleaf / Prism: automatic.
+\usepackage[acronym, toc]{glossaries}
+\makeglossaries
+\input{Preliminary/glossary}
+
+%--- Hyperlinks (always load last) ---
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks = true,
+  linkcolor  = black,
+  citecolor  = black,
+  urlcolor   = black,
+}

@@ -1,0 +1,67 @@
+%====================================================================
+%  Preliminary/cover.tex
+%  HKU MSc Dissertation — Thesis Details & Cover Page
+%
+%  *** EDIT YOUR THESIS DETAILS IN THIS FILE ***
+%
+%  The cover page layout is at the bottom of this file.
+%  \SubmissionDate auto-updates on every compile.
+%====================================================================
+
+%====================================================================
+%  THESIS DETAILS  ← edit these fields
+%====================================================================
+\newcommand{\ThesisTitle}{%
+  This is a Title This is a Title This is a Title\\
+  This is a Title This is a Title\\
+  This is a Title%
+}
+\newcommand{\AuthorName}{CHAN TAI MAN}
+\newcommand{\StudentID}{3036123456}
+\newcommand{\PreviousDegree}{B.~Eng.~(ABC Uni)}
+\newcommand{\DegreeName}{Master of Science in Engineering}
+\newcommand{\Specialisation}{(Electrical and Electronic Engineering)}
+\newcommand{\Department}{Department of Electrical and Computer Engineering}
+\newcommand{\University}{The University of Hong Kong}
+\newcommand{\SupervisorName}{Prof. Supervisor Name}
+
+% Auto-updating month + year — updates on every compile (datetime pkg)
+% e.g. "April 2026"
+\newcommand{\SubmissionDate}{\monthandyear\today}
+
+%====================================================================
+%  COVER PAGE LAYOUT
+%====================================================================
+\thispagestyle{empty}
+\begin{center}
+  \vspace*{2cm}
+
+  %--- Title: 20pt bold centred ---
+  {\fontsize{20}{26}\selectfont\bfseries \ThesisTitle \par}
+
+  \vspace{1.5cm}
+  {\normalsize Submitted by}
+
+  \vspace{0.6cm}
+  {\normalsize\bfseries \AuthorName}\\[2pt]
+  {\normalsize \StudentID}\\[2pt]
+  {\normalsize\itshape \PreviousDegree}
+
+  \vspace{1.5cm}
+  {\normalsize
+    A dissertation submitted in partial fulfilment of the\\
+    requirements for the degree of\\[4pt]
+    \DegreeName\\[2pt]
+    \Specialisation
+  }
+
+  \vspace{0.8cm}
+  {\normalsize At the}\\[4pt]
+  {\normalsize \textbullet\enspace \Department}\\[2pt]
+  {\normalsize \University}
+
+  \vspace{0.8cm}
+  {\normalsize In}\\[4pt]
+  {\normalsize \SubmissionDate}
+\end{center}
+\clearpage
