@@ -54,6 +54,17 @@
   {\thesubsection\quad}{0pt}{}
 \titlespacing*{\subsection}{0pt}{10pt}{4pt}
 
+% Allow a page break between two consecutive headings (e.g. a section
+% immediately followed by a subsection with no text in between).
+% Without this, a long run of empty placeholder sections forms one
+% unbreakable block, causing blank pages and overfull pages.
+\usepackage{etoolbox}
+\makeatletter
+\pretocmd{\section}{\if@nobreak\@nobreakfalse\fi}{}{}
+\pretocmd{\subsection}{\if@nobreak\@nobreakfalse\fi}{}{}
+\pretocmd{\subsubsection}{\if@nobreak\@nobreakfalse\fi}{}{}
+\makeatother
+
 %--- Header / Footer ---
 \usepackage{fancyhdr}
 \pagestyle{fancy}
@@ -123,13 +134,6 @@
 
 %--- Miscellaneous ---
 \usepackage{url}
-
-%--- Glossaries ---
-%  Compile order: xelatex → makeglossaries main → xelatex → xelatex
-%  Overleaf / Prism: automatic.
-\usepackage[acronym, toc]{glossaries}
-\makeglossaries
-\input{Preliminary/glossary}
 
 %--- Hyperlinks (always load last) ---
 \usepackage{hyperref}

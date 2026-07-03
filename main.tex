@@ -8,7 +8,6 @@
 %    Preliminary/abstract.tex    ← abstract
 %    Preliminary/declaration.tex ← declaration of authorship
 %    Preliminary/acknowledgment.tex
-%    Preliminary/glossary.tex    ← glossary & acronym definitions
 %    Preliminary/symbols.tex     ← list of symbols
 %    Chapters/chapter01–05.tex   ← chapters
 %    Figures/                    ← add figures here
@@ -17,8 +16,6 @@
 %
 %  Compiler: XeLaTeX (required)
 %  Compile order (Overleaf/Prism: automatic):
-%    xelatex main
-%    makeglossaries main
 %    xelatex main
 %    xelatex main
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -71,16 +68,6 @@
 \clearpage
 
 \input{Preliminary/symbols}
-
-%====================================================================
-%  ABBREVIATIONS & GLOSSARY
-%  Requires makeglossaries pass (automatic on Overleaf/Prism).
-%====================================================================
-\printglossary[type=\acronymtype, title=Abbreviations,
-               toctitle=List of Abbreviations, nonumberlist]
-\clearpage
-\printglossary[title=Glossary, toctitle=Glossary, nonumberlist]
-\clearpage
 
 %====================================================================
 %  MAIN MATTER
