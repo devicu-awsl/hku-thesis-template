@@ -157,6 +157,10 @@ Replace `Figures/Signature.png` with your own signature (transparent PNG, ~500 p
 
 ---
 
+==================
+ PULL REQUESTS
+==================
+https://github.com/devicu-awsl/hku-thesis-template.git
 ## Notes
 
 - The compiler must be **XeLaTeX** — pdfLaTeX will fail due to `fontspec`.
