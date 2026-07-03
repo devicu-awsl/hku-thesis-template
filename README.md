@@ -157,12 +157,17 @@ Replace `Figures/Signature.png` with your own signature (transparent PNG, ~500 p
 
 ---
 
-==================
- PULL REQUESTS
-==================
-https://github.com/devicu-awsl/hku-thesis-template.git
+
 ## Notes
 
 - The compiler must be **XeLaTeX** — pdfLaTeX will fail due to `fontspec`.
 - On systems without Times New Roman (e.g. a plain Linux install), the template automatically falls back to TeX Gyre Termes, a metrically compatible substitute. On Overleaf and Prism, Times New Roman loads directly.
 - Page breaks are permitted between consecutive headings (a small patch in `Config/config.tex`), so a draft full of empty placeholder sections still paginates correctly.
+
+==================
+
+ PULL REQUESTS
+ 
+==================
+
+https://github.com/devicu-awsl/hku-thesis-template.git
