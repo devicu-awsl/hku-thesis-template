@@ -4,17 +4,15 @@ An unofficial LaTeX template for the HKU MSc Final Report / Dissertation, strict
 
 The official Word template (author: Dr. Andrew Ho Chun Wu, updated 18 April 2026) is available [on Google Docs](https://docs.google.com/document/d/1-CYaa02tVP_KbrOG3NTDs8q2SehJ-lYF/edit?usp=sharing&ouid=107516997935154803843&rtpof=true&sd=true) and in the `Documentation/` folder of this repository.
 
-## Submission Guidelines
-
-- **Length:** The recommended length for a dissertation is 25,000 words, though this varies by research area. **Ultimately, the focus should be on the quality and depth of content rather than the word count.** Discuss with your supervisor what should be included.
-- **Plagiarism:** similarity to any single source must be below 1%. If you use figures, **do not paste figures directly from other sources** — redraw them yourself (even when cited), or omit them entirely.
-- **GenAI:** the AI-generated score must be below 20% (scores under 20% are suppressed by Turnitin). If your score exceeds 20%, consult your supervisor — recent literature suggests Turnitin may misclassify non-native English writing as AI-generated. Your supervisor may also be contacted if needed.
-
 ---
 
 ## Preview
 
 A compiled sample is available at `Documentation/main.pdf`.
+
+<img src="Documentation/cover-01.png" alt="Thesis Cover Preview" width="500">
+> Note for Cover Page: "B. Eng. (ABC Uni) " --> 
+Put down your 1st degree, with the abbreviation of the name of your university.
 
 ---
 
@@ -159,8 +157,17 @@ Replace `Figures/Signature.png` with your own signature (transparent PNG, ~500 p
 
 ---
 
+
 ## Notes
 
 - The compiler must be **XeLaTeX** — pdfLaTeX will fail due to `fontspec`.
 - On systems without Times New Roman (e.g. a plain Linux install), the template automatically falls back to TeX Gyre Termes, a metrically compatible substitute. On Overleaf and Prism, Times New Roman loads directly.
 - Page breaks are permitted between consecutive headings (a small patch in `Config/config.tex`), so a draft full of empty placeholder sections still paginates correctly.
+
+==================
+
+ PULL REQUESTS
+ 
+==================
+
+https://github.com/devicu-awsl/hku-thesis-template.git
