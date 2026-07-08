@@ -105,7 +105,7 @@
   font            = normalsize,
   labelfont       = bf,
   labelsep        = space,
-  justification   = justified,
+  justification   = centering,
   singlelinecheck = false,
 }
 \captionsetup[table]{position=above, skip=4pt}
@@ -126,14 +126,31 @@
 \usepackage{graphicx}
 \graphicspath{{Figures/}}
 \usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{svg}
 
 %--- Tables ---
 \usepackage{booktabs}
 \usepackage{array}
 \usepackage{longtable}
+\usepackage{tabularx}
+
+%--- Listings ---
+\usepackage{listings}
+\lstset{
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    frame=single,
+    captionpos=b, 
+    numbers=none,
+    mathescape=true % Crucial: allows to use $...$ math inside the listing
+}
 
 %--- Miscellaneous ---
 \usepackage{url}
+
+\usepackage{multicol}
+\usepackage{enumitem}
 
 %--- Hyperlinks (always load last) ---
 \usepackage{hyperref}
