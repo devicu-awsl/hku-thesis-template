@@ -14,7 +14,6 @@ Table~\ref{tab:example} shows an example of a table.
 Fig.~\ref{fig:example} shows an example of a figure.
 
 \begin{table}[ht]
-  \caption{Title for Table 2.1}
   \label{tab:example}
   \centering
   \begin{singlespace}
@@ -28,6 +27,7 @@ Fig.~\ref{fig:example} shows an example of a figure.
     \bottomrule
   \end{tabular}
   \end{singlespace}
+  \caption{Title for Table 2.1}
 \end{table}
 
 \begin{figure}[ht]
@@ -35,6 +35,24 @@ Fig.~\ref{fig:example} shows an example of a figure.
   \fbox{\rule{0pt}{4cm}\rule{0.7\textwidth}{0pt}}
   \caption{Title for Figure 2.1}
   \label{fig:example}
+\end{figure}
+
+\begin{table}[htbp]
+    \centering
+    \begin{lstlisting}
+        Algorithm: ^-^
+        Input : LaTeX
+        Output: Document
+    \end{lstlisting}
+    \caption{Title for Table 2.2}
+    \label{tab:listing}
+\end{table}
+
+\begin{figure}[htbp]
+    \centering
+    \includesvg[inkscapelatex=true, width=0.8\textwidth]{Figures/svg-sample.svg}
+    \caption{Title for Figure 2.2}
+    \label{fig:svg}
 \end{figure}
 
 %--------------------------------------------------------------------

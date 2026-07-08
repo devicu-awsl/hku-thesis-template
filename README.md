@@ -164,6 +164,10 @@ Replace `Figures/Signature.png` with your own signature (transparent PNG, ~500 p
 - On systems without Times New Roman (e.g. a plain Linux install), the template automatically falls back to TeX Gyre Termes, a metrically compatible substitute. On Overleaf and Prism, Times New Roman loads directly.
 - Page breaks are permitted between consecutive headings (a small patch in `Config/config.tex`), so a draft full of empty placeholder sections still paginates correctly.
 
+## Open the project on Overleaf (GitHub is always the latest)
+
+[<img src="Documentation/overleaf.png" alt="overleaf" width="200">](https://www.overleaf.com/latex/templates/hku-msc-dissertation-latex-template/wngqqydtxhtz)
+
 ==================
 
  PULL REQUESTS
