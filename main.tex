@@ -32,6 +32,7 @@
 %====================================================================
 \newcommand{\unnumberedchapter}[1]{%
   \chapter*{\MakeUppercase{#1}}%
+  \phantomsection% hyperref anchor so the ToC link points here, not to the cover
   \addcontentsline{toc}{chapter}{#1}%
   \markboth{\MakeUppercase{#1}}{}%
 }
@@ -58,16 +59,21 @@
 \tableofcontents\clearpage
 
 % List of Tables — only shown if tables exist in the document
-\listoftables
+\phantomsection% anchor on the first page of the list
 \addcontentsline{toc}{chapter}{List of Tables}
+\listoftables
 \clearpage
 
 % List of Figures — only shown if figures exist in the document
-\listoffigures
+\phantomsection% anchor on the first page of the list
 \addcontentsline{toc}{chapter}{List of Figures}
+\listoffigures
 \clearpage
 
-\input{Preliminary/symbols}
+% List of Symbols — only shown if symbol exist in the document
+
+
+
 
 %====================================================================
 %  MAIN MATTER
@@ -85,17 +91,24 @@
 %  REFERENCES
 %====================================================================
 \clearpage
-\begin{center}
-  {\fontsize{16}{22}\selectfont\bfseries REFERENCES}
-\end{center}
+\chapter*{References}
+\phantomsection
 \addcontentsline{toc}{chapter}{References}
-\markboth{REFERENCES}{}
-\input{references}
+\renewcommand{\bibname}{References}
+\label{chap:references}
+{\pagestyle{plain}
+\input{references.tex}
+\clearpage % ship out the last page while 'plain' is still active
+}
+
 
 %====================================================================
 %  APPENDICES
 %====================================================================
 \appendix
+\renewcommand{\cftchappresnum}{}     % remove "Appendix X" prefix in ToC
+\renewcommand{\cftchapaftersnum}{}   % remove any separator after it
+\renewcommand{\cftchapnumwidth}{0pt} % reclaim the spacing
 \input{appendices}
 
 \end{document}
