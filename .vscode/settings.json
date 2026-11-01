@@ -1,0 +1,29 @@
+{
+  "latex-workshop.latex.build.enableMagicComments": false,
+  "latex-workshop.latex.recipe.default": "HKU: XeLaTeX (3 passes)",
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "HKU: XeLaTeX (3 passes)",
+      "tools": [
+        "hku-xelatex",
+        "hku-xelatex",
+        "hku-xelatex"
+      ]
+    }
+  ],
+  "latex-workshop.latex.tools": [
+    {
+      "name": "hku-xelatex",
+      "command": "xelatex",
+      "cwd": "%DIR%",
+      "args": [
+        "--enable-write18",
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-file-line-error",
+        "%DOC_EXT%"
+      ]
+    }
+  ]
+}

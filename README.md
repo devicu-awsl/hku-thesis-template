@@ -42,6 +42,9 @@ Put down your 1st degree, with the abbreviation of the name of your university.
 ├── Figures/
 │   └── Signature.png              ← Replace with your own signature image
 │
+├── .vscode/
+│   └── settings.json              ← VS Code build recipe (Windows + MiKTeX)
+│
 ├── Documentation/                 ← Official Word template + sample PDF
 ├── references.tex                 ← Bibliography entries (IEEE style)
 ├── appendices.tex                 ← Appendix chapters
@@ -78,7 +81,7 @@ This template **requires XeLaTeX** (for `fontspec` / Times New Roman). pdfLaTeX 
 | **Overleaf** | Menu (top-left) → Compiler → **XeLaTeX**  |
 | **Prism** (***shutting down on January 1, 2027***) | XeLaTeX is the default — no change needed; export your projects before shutdown |
 | **[inscrive.io](https://inscrive.io)** | Project settings → LaTeX engine → **XeLaTeX**; use `main.tex` as the main document |
-| **Local**    | Run `latexmk -shell-escape main.tex` (the included `.latexmkrc` selects XeLaTeX automatically); Inkscape must be installed for the SVG example |
+| **Local (VS Code)** | Windows + MiKTeX: open the repository folder in VS Code with LaTeX Workshop and use the included **HKU: XeLaTeX (3 passes)** recipe. See [VS Code setup](#local-vs-code-setup-windows--miktex) below. |
 
 `main.tex` also starts with `% !TEX program = xelatex`, which inscrive.io supports for engine selection. You can import the project from a ZIP or through its Git integration. See [inscrive.io's migration and compiler guide](https://inscrive.io/articles/migrate-from-overleaf).
 
@@ -94,7 +97,7 @@ OpenAI has [announced Prism's shutdown](https://openai.com/index/introducing-pri
 
 ### 3. Compile
 
-On **Overleaf / inscrive.io / Prism (before shutdown)**, click Compile with XeLaTeX selected. Locally, run `latexmk -shell-escape main.tex` with Inkscape installed. Repeated LaTeX passes are needed for the contents, lists and cross-references; `latexmk` runs these automatically. If references still show as `??`, compile again after fixing any errors.
+On **Overleaf / inscrive.io / Prism (before shutdown)**, click Compile with XeLaTeX selected. In **VS Code on Windows with MiKTeX**, use the included **HKU: XeLaTeX (3 passes)** recipe as described below. Repeated LaTeX passes are needed for the contents, lists and cross-references. If references still show as `??`, compile again after fixing any errors.
 
 The bundled SVG example uses `svg` and Inkscape to generate PDF + LaTeX files during compilation. A fresh build needs Inkscape and shell escape enabled; cached SVG output alone does not verify a fresh conversion.
 
@@ -106,6 +109,39 @@ The bundled SVG example uses `svg` and Inkscape to generate PDF + LaTeX files du
 - Edit the list of symbols in `Preliminary/symbols.tex`
 
 ---
+
+
+## Local (VS Code) Setup: Windows + MiKTeX
+
+This workflow uses [LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) and the project settings in [`.vscode/settings.json`](.vscode/settings.json). It was verified by the template maintainer on Windows with MiKTeX 26.5.
+
+1. Install **VS Code**, the **LaTeX Workshop** extension, **MiKTeX**, and **Inkscape**. In MiKTeX Console, check for updates and install any missing LaTeX packages requested during compilation.
+2. Make Inkscape available on Windows `Path`. With the default installation, add `C:\Program Files\Inkscape\bin` to your user `Path`. Use the actual executable directory if installed elsewhere.
+3. Close **all VS Code windows**, reopen VS Code, and check Inkscape from a new integrated terminal:
+
+   ```powershell
+   inkscape --version
+   ```
+
+   If the command is not recognized, check the installation directory and `Path`, then restart VS Code again. Installing Inkscape alone does not guarantee that the compiler can find it.
+4. Use **File → Open Folder** to open the repository root (the folder containing `main.tex` and `.vscode`). Open `main.tex`.
+5. Run **LaTeX Workshop: Build with recipe** from the Command Palette and select **HKU: XeLaTeX (3 passes)**. The included workspace settings also make it the default recipe.
+
+The recipe runs XeLaTeX three times from the main document's directory and enables external commands with MiKTeX's `--enable-write18` option so Inkscape can convert the SVG example. An error stops the recipe; fix it before rebuilding. The current template uses a manual bibliography, so this recipe does not need BibTeX, Biber, `latexmk`, or Perl.
+
+The workspace settings disable LaTeX Workshop's compiler magic comments for this project. This prevents `% !TEX program = xelatex` from selecting a single-pass build without the required options. That directive remains in `main.tex` for other editors, including inscrive.io. See [LaTeX Workshop's recipe and magic-comment documentation](https://github.com/James-Yu/LaTeX-Workshop/wiki/Compile).
+
+These settings apply only to this repository folder. They contain no personal preferences or machine-specific executable paths. The recipe is for **Windows + MiKTeX**; other TeX distributions may need different command-line options. Overleaf and inscrive.io do not use the VS Code settings.
+
+### Local terminal alternative
+
+If you prefer a terminal and have `latexmk`, Perl, XeLaTeX, and Inkscape installed, run this from the repository root:
+
+```shell
+latexmk -shell-escape main.tex
+```
+
+The included `.latexmkrc` selects XeLaTeX, and `latexmk` repeats compilation as needed. This terminal workflow is separate from the VS Code recipe.
 
 ## Formatting Specifications
 
