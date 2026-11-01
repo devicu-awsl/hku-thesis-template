@@ -8,7 +8,7 @@ The official Word template (author: Dr. Andrew Ho Chun Wu, updated 18 April 2026
 
 ## Preview
 
-A compiled sample is available at `Documentation/main.pdf`.
+A compiled v1.3.2 sample is available at [Documentation/main-preview-v1.3.2.pdf](Documentation/main-preview-v1.3.2.pdf).
 
 <img src="Documentation/cover-01.png" alt="Thesis Cover Preview" width="500">
 > Note for Cover Page: "B. Eng. (ABC Uni) " --> 
@@ -76,8 +76,13 @@ This template **requires XeLaTeX** (for `fontspec` / Times New Roman). pdfLaTeX 
 | Platform     | How to set XeLaTeX                        |
 |--------------|-------------------------------------------|
 | **Overleaf** | Menu (top-left) → Compiler → **XeLaTeX**  |
-| **Prism**    | XeLaTeX is the default — no change needed |
-| **Local**    | Run `latexmk main.tex` (the included `.latexmkrc` selects XeLaTeX automatically) |
+| **Prism** (***shutting down on January 1, 2027***) | XeLaTeX is the default — no change needed; export your projects before shutdown |
+| **[inscrive.io](https://inscrive.io)** | Project settings → LaTeX engine → **XeLaTeX**; use `main.tex` as the main document |
+| **Local**    | Run `latexmk -shell-escape main.tex` (the included `.latexmkrc` selects XeLaTeX automatically); Inkscape must be installed for the SVG example |
+
+`main.tex` also starts with `% !TEX program = xelatex`, which inscrive.io supports for engine selection. You can import the project from a ZIP or through its Git integration. See [inscrive.io's migration and compiler guide](https://inscrive.io/articles/migrate-from-overleaf).
+
+OpenAI has [announced Prism's shutdown](https://openai.com/index/introducing-prism/). inscrive.io is an alternative editor for this template; Overleaf and local XeLaTeX remain supported.
 
 > **pdfLaTeX fallback (not recommended):** replace the "Font" section of `Config/config.tex` with the lines below and delete `.latexmkrc`:
 >
@@ -89,7 +94,9 @@ This template **requires XeLaTeX** (for `fontspec` / Times New Roman). pdfLaTeX 
 
 ### 3. Compile
 
-On **Overleaf / Prism**, simply click Compile. Locally, run `latexmk main.tex` (compile twice if cross-references show as `??`).
+On **Overleaf / inscrive.io / Prism (before shutdown)**, click Compile with XeLaTeX selected. Locally, run `latexmk -shell-escape main.tex` with Inkscape installed. Repeated LaTeX passes are needed for the contents, lists and cross-references; `latexmk` runs these automatically. If references still show as `??`, compile again after fixing any errors.
+
+The bundled SVG example uses `svg` and Inkscape to generate PDF + LaTeX files during compilation. A fresh build needs Inkscape and shell escape enabled; cached SVG output alone does not verify a fresh conversion.
 
 ### 4. Write Your Content
 
@@ -108,7 +115,7 @@ These match the official Word template (note: this is the department's house sty
 |-----------------|----------------------------------------------|
 | Paper           | A4                                           |
 | Margins         | L=3.17cm R=3.17cm T=2.54cm B=2.54cm          |
-| Font            | Times New Roman 12pt (via `fontspec`)        |
+| Font            | Times New Roman 12pt when installed; TeX Gyre Termes fallback (via `fontspec`) |
 | Line spacing    | Double (2.0)                                 |
 | Chapter heading | 16pt bold                                    |
 | Section heading | 14pt bold                                    |
@@ -161,8 +168,19 @@ Replace `Figures/Signature.png` with your own signature (transparent PNG, ~500 p
 ## Notes
 
 - The compiler must be **XeLaTeX** — pdfLaTeX will fail due to `fontspec`.
-- On systems without Times New Roman (e.g. a plain Linux install), the template automatically falls back to TeX Gyre Termes, a metrically compatible substitute. On Overleaf and Prism, Times New Roman loads directly.
+- The template uses Times New Roman when the compiler can find it; otherwise it automatically falls back to TeX Gyre Termes. Verification on inscrive.io with XeLaTeX and TeX Live 2026 used TeX Gyre Termes. Check the compiled font against your department's requirements if Times New Roman is mandatory.
 - Page breaks are permitted between consecutive headings (a small patch in `Config/config.tex`), so a draft full of empty placeholder sections still paginates correctly.
+
+## v1.3.2 Compatibility Update
+
+- Separate uppercase contents/list titles from their font declarations for compatibility with newer `tocloft` versions.
+- Keep SVG inclusion and disable the unused `transparent` package through `svg`'s `notransparent` option for XeLaTeX. Partially transparent SVG text needs separate handling; the bundled example is opaque.
+- Move the example table's label after its caption so `\ref{tab:example}` resolves to the correct table.
+- Add the XeLaTeX engine directive and inscrive.io setup instructions, and mark Prism's retirement date.
+
+Verified on inscrive.io with XeLaTeX and TeX Live 2026: no compilation errors or warnings were reported. The compiled result is included in `Documentation/main-preview-v1.3.2.pdf`.
+
+When migrating an existing project, start with a fresh project or clear generated build files, then check the contents, List of Tables, List of Figures, Table 2.1 reference, and SVG figure.
 
 ## Open the project on Overleaf (GitHub is always the latest)
 

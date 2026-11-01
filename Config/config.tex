@@ -83,9 +83,14 @@
 \usepackage{tocloft}
 \setlength{\cftbeforetoctitleskip}{0pt}
 \setlength{\cftaftertoctitleskip}{12pt}
-\renewcommand{\cfttoctitlefont}{\fontsize{16}{20}\bfseries\MakeUppercase}
-\renewcommand{\cftlottitlefont}{\fontsize{16}{20}\bfseries\MakeUppercase}
-\renewcommand{\cftloftitlefont}{\fontsize{16}{20}\bfseries\MakeUppercase}
+% Keep font declarations separate from title text. In newer tocloft versions,
+% a trailing \MakeUppercase can consume the internal \UseName command.
+\renewcommand{\cfttoctitlefont}{\fontsize{16}{20}\selectfont\bfseries}
+\renewcommand{\cftlottitlefont}{\fontsize{16}{20}\selectfont\bfseries}
+\renewcommand{\cftloftitlefont}{\fontsize{16}{20}\selectfont\bfseries}
+\renewcommand{\contentsname}{CONTENTS}
+\renewcommand{\listtablename}{LIST OF TABLES}
+\renewcommand{\listfigurename}{LIST OF FIGURES}
 \setlength{\cftbeforelottitleskip}{0pt}
 \setlength{\cftafterlottitleskip}{12pt}
 \setlength{\cftbeforeloftitleskip}{0pt}
@@ -127,7 +132,9 @@
 \graphicspath{{Figures/}}
 \usepackage{tikz}
 \usepackage{xcolor}
-\usepackage{svg}
+% XeLaTeX does not support transparent's pdfTeX color-stack code path.
+% Keep SVG inclusion; the bundled example does not need text transparency.
+\usepackage[notransparent]{svg}
 
 %--- Tables ---
 \usepackage{booktabs}

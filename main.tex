@@ -1,3 +1,4 @@
+% !TEX program = xelatex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  HKU MSc Final Report / Dissertation — LaTeX Template
 %
@@ -15,9 +16,10 @@
 %    appendices.tex              ← appendix chapters
 %
 %  Compiler: XeLaTeX (required)
-%  Compile order (Overleaf/Prism: automatic):
-%    xelatex main
-%    xelatex main
+%  Compile order (online editors normally automate repeated passes):
+%    xelatex -shell-escape main
+%    xelatex -shell-escape main
+%  SVG conversion requires Inkscape and shell escape.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \documentclass[12pt, a4paper, oneside]{report}
